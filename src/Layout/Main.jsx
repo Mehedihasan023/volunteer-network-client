@@ -4,7 +4,7 @@ import NavBar from "../pages/Shared/NavBar";
 
 const Main = () => {
     return (
-        <div>
+        <div className="bg-[#F8FAFC] h-screen">
             <NavBar></NavBar>
             <Outlet></Outlet>
         </div>
