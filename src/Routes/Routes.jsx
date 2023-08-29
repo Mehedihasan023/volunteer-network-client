@@ -5,6 +5,8 @@ import Error from "../pages/Error";
 import Admin from "../pages/Admin";
 import RegisterList from "../pages/RegisterList";
 import AddEvents from "../pages/AddEvents";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
                         element: <AddEvents></AddEvents>
                     }
                 ]
+            },
+            {
+                path:'/login',
+                element:<Login></Login>
+            },
+            {
+                path:'/register',
+                element:<Register></Register>
             },
             {
                 path: '*',

@@ -67,7 +67,7 @@ const AddEvents = () => {
 
 
                     </div>
-                    <div className="form-control mt-6">
+                    <div className="form-control mt-4">
 
                         <input className="btn btn-primary btn-block" type="submit" value="Submit" />
                     </div>

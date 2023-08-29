@@ -16,7 +16,7 @@ const Home = () => {
             <div className="flex justify-center items-center ">
                 <h2 className="text-3xl">I grow by helping people in need.</h2>
             </div>
-            <div className="grid md:grid-cols-3 grid-cols-1 lg:grid-cols-4 mx-11 mt-20">
+            <div className="grid md:grid-cols-3 grid-cols-1 lg:grid-cols-4 mx-11 mt-4">
                {
                 events.map(event=> <EventsCard
                 key={event._id}
