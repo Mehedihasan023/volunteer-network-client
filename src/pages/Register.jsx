@@ -1,9 +1,35 @@
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Register = () => {
+    const { createUser, updateUserData } = useContext(AuthContext);
+    const handleRegister = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const name= form.name.value;
+        const email= form.email.value;
+        const password= form.password.value;
+        const date = form.date.value;
+        const events = form.events.value;
+        const registration = {name,email,password,date,events};
+        console.log(registration);
+        
+        createUser(email,password)
+        .then(result=>{
+          const user = result.user;
+          updateUserData(user,name)
+          console.log(user);
+        })
+        .catch(error=> console.error(error))
+
+    }
+
+
+
     return (
         <div className="flex justify-center mt-16">
 
-          <form>
+          <form onSubmit={handleRegister}>
                 <div className=" md:w-96 w-72  bg-base-100 px-5 py-4">
                     <h2 className="ml-1 mt-2 text-xl font-bold">Register as a Volunteer</h2>
                     <div className="">
