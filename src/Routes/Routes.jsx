@@ -9,6 +9,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Events from "../pages/Events";
 import PrivateRoute from "./PrivateRoute";
+import UpdateEvents from "../pages/UpdateEvents";
+import UpEventsInfo from "../pages/UpEventsInfo";
 
 
 const router = createBrowserRouter([
@@ -31,6 +33,15 @@ const router = createBrowserRouter([
                     {
                         path: '/admin/add-events',
                         element: <AddEvents></AddEvents>
+                    },
+                    {
+                        path:'/admin/update-events',
+                        element:<UpdateEvents></UpdateEvents>
+                    },
+                    {
+                        path:'/admin/up-events-info/:id',
+                        element:<UpEventsInfo></UpEventsInfo>,
+                        loader: ({params}) => fetch(`http://localhost:5000/events/${params.id}`)
                     }
                 ]
             },

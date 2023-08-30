@@ -7,27 +7,38 @@ const Admin = () => {
                 <ul className="steps steps-vertical">
                     <ul className="steps steps-vertical">
                         <NavLink
+                            data-content="✓"
                             to="/admin/"
                             className={({ isActive }) =>
                                 isActive ? "step-primary step" : "step"
                             }
                         >
-                            <li data-content="✓" className="">Volunteer register list</li>
+                            <li className="">Volunteer register list</li>
                         </NavLink>
                         <NavLink
+                            data-content="✓"
                             to="/admin/add-events"
                             className={({ isActive }) =>
                                 isActive ? "step-primary step" : "step"
                             }
                         >
-                            <li data-content="✓" className="">Add event</li>
+                            <li className="">Add event</li>
+                        </NavLink>
+                        <NavLink
+                            data-content="✓"
+                            to="/admin/update-events"
+                            className={({ isActive }) =>
+                                isActive ? "step-primary step" : "step"
+                            }
+                        >
+                            <li className="">Update an event</li>
                         </NavLink>
                     </ul>
-               
+
                 </ul>
             </div>
             <div className="md:col-span-4 " >
-             <Outlet></Outlet>
+                <Outlet></Outlet>
             </div>
         </div>
     );

@@ -50,7 +50,7 @@ const Login = () => {
             <div className="border bg-white w-96 py-12">
                 <h2 className="text-2xl font-bold text-center">Login With</h2>
                 {/* sign in with email and pass */}
-                <form onSubmit={handleLogin}>
+                <form onSubmit={handleLogin} className="flex justify-center">
                     <div className=" md:w-96 w-72  bg-base-100 px-5 py-4">
                         <div className="">
                             <div className="form-control">

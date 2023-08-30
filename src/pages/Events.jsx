@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 const Events = () => {
     const { user } = useContext(AuthContext);
     const [eventList, setEventList] = useState([]);
-    const url = `https://volunteer-network-server-tawny.vercel.app/events-list?email=${user?.email}`
+    const url = `http://localhost:5000/events-list?email=${user?.email}`
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -25,7 +25,7 @@ const Events = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://volunteer-network-server-tawny.vercel.app/events-list/${id}`, {
+                fetch(`http://localhost:5000/events-list/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -47,8 +47,7 @@ const Events = () => {
 
 
     }
-
-   // console.log(eventList)
+  
     return (
         <>
             <h2 className="text-center font-bold text-3xl mt-7"> {eventList.length === 0 ? 'No Events Added' : ' '}</h2>

@@ -18,15 +18,13 @@ const Register = () => {
         const date = form.date.value;
         const events = form.events.value;
         const registration = { name, email, password, date, events };
-        //console.log(registration);
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 updateUserData(user, name)
-                //console.log(user);
                 // add user to database
-                fetch('https://volunteer-network-server-tawny.vercel.app/register-list', {
+                fetch('http://localhost:5000/register-list', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -35,7 +33,6 @@ const Register = () => {
                 })
                     .then(res => res.json())
                 .then(data => {
-                    //console.log(data)
                     if (data.insertedId) {
                         Swal.fire({
                             icon: 'success',

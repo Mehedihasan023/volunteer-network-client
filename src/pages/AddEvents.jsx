@@ -11,7 +11,7 @@ const AddEvents = () => {
         const addEvents={title,date,description,img}
         console.log(addEvents);
 
-        fetch('https://volunteer-network-server-tawny.vercel.app/add-events', {
+        fetch('http://localhost:5000/add-events', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

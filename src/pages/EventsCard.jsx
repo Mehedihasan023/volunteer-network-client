@@ -29,7 +29,7 @@ const EventsCard = ({ event }) => {
             console.log(eventList)
 
             //add events to database
-            fetch('https://volunteer-network-server-tawny.vercel.app/event-list', {
+            fetch('http://localhost:5000/event-list', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

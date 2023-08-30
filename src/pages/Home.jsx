@@ -3,13 +3,13 @@ import EventsCard from "./EventsCard";
 
 const Home = () => {
     const [events, setEvents] = useState([]);
-
+//fetch all events data
     useEffect(() => {
-        fetch('https://volunteer-network-server-tawny.vercel.app/events')
+        fetch('http://localhost:5000/events')
             .then(res => res.json())
             .then(data => setEvents(data))
     }, [])
-  //  console.log(events);
+
 
 
     return (
