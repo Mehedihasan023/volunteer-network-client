@@ -1,12 +1,18 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-
+import Swal from 'sweetalert2'
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
+    const [error, setError] = useState(' ');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     const handleLogin = event => {
         event.preventDefault();
+        //clear previous error message
+        setError(' ');
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -14,9 +20,16 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                //navigate(from, { replace: true })
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successfully...',
+                })
+                navigate(from, { replace: true })
             })
-            .then(error => console.error(error))
+            .catch(error => {
+                setError(error.message)
+                console.error(error);
+            })
 
     }
     const handleGoogleLogin = () => {
@@ -24,6 +37,11 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login successfully...',
+                })
+                navigate(from, { replace: true })
             })
             .catch(error => console.log(error))
     }
@@ -39,7 +57,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                                <input type="email" name='email' placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -47,6 +65,8 @@ const Login = () => {
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" />
                             </div>
+                            {/* show error message */}
+                            <p className="text-red-500">{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
                             </div>

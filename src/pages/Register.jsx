@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { Link } from "react-router-dom";
-
+import { Link, useLocation, useNavigate, } from "react-router-dom";
+import Swal from 'sweetalert2'
 const Register = () => {
     const { createUser, updateUserData } = useContext(AuthContext);
+    const [error, setError] = useState(' ');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     const handleRegister = event => {
         event.preventDefault();
+        setError(' ');
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
@@ -13,30 +18,40 @@ const Register = () => {
         const date = form.date.value;
         const events = form.events.value;
         const registration = { name, email, password, date, events };
-        console.log(registration);
+        //console.log(registration);
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 updateUserData(user, name)
-                console.log(user);
+                //console.log(user);
+                // add user to database
+                fetch('http://localhost:5000/register-list', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(registration)
+                })
+                    .then(res => res.json())
+                .then(data => {
+                    //console.log(data)
+                    if (data.insertedId) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registered successfully...',
+                        })
+                    }
+                })
+              
+                navigate(from, { replace: true })
             })
-            .catch(error => console.error(error))
-
-        fetch('http://localhost:5000/register-list', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(registration)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.insertedId) {
-                    alert('successfully')
-                }
+            .catch(error => {
+                setError(error.message);
+                console.log(error);
+                return;
             })
+  
     }
 
 
@@ -58,7 +73,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -78,6 +93,8 @@ const Register = () => {
                             </label>
                             <input type="text" name='events' placeholder="Events or Volunteer rules" className="input input-bordered" />
                         </div>
+                        {/* show error message */}
+                        <p className="text-red-500">{error}</p>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Registration</button>
                         </div>

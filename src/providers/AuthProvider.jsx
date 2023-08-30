@@ -35,35 +35,11 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
-            // if (currentUser && currentUser.email) {
-            //     const loggedUser = {
-            //         email: currentUser.email
-            //     }
-            //     fetch('https://car-doctor-server-two-kappa.vercel.app/jwt', {
-            //         method: 'POST',
-            //         headers: {
-            //             'content-type': 'application/json'
-            //         },
-            //         body: JSON.stringify(loggedUser)
-            //     })
-            //         .then(res => res.json())
-            //         .then(data => {
-            //             //console.log('jwt response',data);
-            //             localStorage.setItem('car-access-token', data.token);
-
-            //         })
-            // }
-            // else {
-            //     localStorage.removeItem('car-access-token');
-            // }
         });
         return () => {
             return unsubscribe();
         }
-    }, [])
-
-
-
+    }, [user])
 
 
     const authInfo = {

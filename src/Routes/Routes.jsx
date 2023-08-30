@@ -8,6 +8,7 @@ import AddEvents from "../pages/AddEvents";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Events from "../pages/Events";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/admin',
-                element: <Admin></Admin>,
+                element: <PrivateRoute><Admin></Admin></PrivateRoute>,
                 children: [
                     {
                       path:'/admin/',
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
             },
             {
               path:'/events',
-              element:<Events></Events>,
+                element: <PrivateRoute><Events></Events></PrivateRoute>,
             },
           
             {
