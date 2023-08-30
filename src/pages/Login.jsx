@@ -4,21 +4,63 @@ import { AuthContext } from "../providers/AuthProvider";
 
 
 const Login = () => {
-    const { googleSignIn } = useContext(AuthContext);
+    const {signIn, googleSignIn } = useContext(AuthContext);
     const handleLogin =()=>{
-      googleSignIn()
-      .then(result=>{
-        const user = result.user;
-        console.log(user);
-      })
-      .catch(error=> console.log(error))
-    }
 
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                //navigate(from, { replace: true })
+            })
+            .then(error => console.error(error))
+
+
+     
+    }
+    const handleGoogleLogin=()=>{
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error))
+    }
     return (
         <div className="flex justify-center mt-16 ">
             <div onClick={handleLogin} className="border bg-white w-96 py-12">
-                <h2 className="text-3xl font-bold text-center">Login With</h2>
-                <div className="flex justify-center items-center">
+                <h2 className="text-2xl font-bold text-center">Login With</h2>
+
+                <form onSubmit={handleLogin}>
+                    <div className=" md:w-96 w-72  bg-base-100 px-5 py-4">
+                        {/* <h2 className="ml-1 mt-2 text-xl font-bold">Register as a Volunteer</h2> */}
+                        <div className="">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="text" name='email' placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+                <div onClick={handleGoogleLogin} className="flex justify-center items-center">
                     <ul className=" border rounded-full  mt-4 h-16 flex justify-center items-center hover:bg-base-200" >
                         <li>
                             <div className="flex justify-around w-80">

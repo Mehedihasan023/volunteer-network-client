@@ -7,6 +7,8 @@ import RegisterList from "../pages/RegisterList";
 import AddEvents from "../pages/AddEvents";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Events from "../pages/Events";
+
 
 const router = createBrowserRouter([
     {
@@ -39,6 +41,11 @@ const router = createBrowserRouter([
                 path:'/register',
                 element:<Register></Register>
             },
+            {
+              path:'/events',
+              element:<Events></Events>,
+            },
+          
             {
                 path: '*',
                 element: <Error></Error>
