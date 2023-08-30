@@ -1,15 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import EventsCard from "./EventsCard";
-import { AuthContext } from "../providers/AuthProvider";
-
 
 const Home = () => {
-    //const{user}=useContext(AuthContext);
     const [events, setEvents] = useState([]);
-    // const [eventTitle,setEventTitle]=useState({});
-    // const [volunteerInfo,setVolunteerInfo]=useState([]);
-    // const [count,setCount] =useState(0);
-    // const [prevId,setPrevId]=useState('');
+
     useEffect(() => {
         fetch('http://localhost:5000/events')
             .then(res => res.json())
@@ -17,32 +11,9 @@ const Home = () => {
     }, [])
     console.log(events);
 
-    // const addToEventsList = (id) => {
-    //    // console.log(id)
-    //   setPrevId(id)
-    //    if(prevId ==id){
-    //     setCount(count+1)
-    //    }
-    //    console.log(count)
-
-    //        //fetch event title by id
-    //        fetch(`http://localhost:5000/events/${id}`)
-    //            .then(res => res.json())
-    //            .then(data => setEventTitle(data))
-    //        console.log(eventTitle)
-    //        //fetch volunteer info by id
-    //        fetch(`http://localhost:5000/register-list?email=${user?.email}`)
-    //            .then(res => res.json())
-    //            .then(data => setVolunteerInfo(data))
-
-    //        const ev = volunteerInfo[0].events = eventTitle.title;
-    //        console.log(ev);
-       
-      
-    // }
-
 
     return (
+        // display all events
         <div className="bg-[#F8FAFC] h-screen">
             <div className="flex justify-center items-center ">
                 <h2 className="text-3xl">I grow by helping people in need.</h2>
@@ -51,9 +22,7 @@ const Home = () => {
                 {
                     events.map(event => <EventsCard
                         key={event._id}
-                        event={event}
-                        //addToEventsList={addToEventsList}
-                       
+                        event={event}   
                     ></EventsCard>)
                 }
             </div>

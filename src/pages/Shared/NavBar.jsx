@@ -19,7 +19,7 @@ const NavBar = () => {
         }
         <li><Link to='/register'>Register</Link></li>
         {
-            user?.email ? <><p className="mt-2">{user.displayName}</p></> :' '
+            user?.email ? <><p className="mt-2 font-semibold">{user.displayName}</p></> :' '
         }
     </>
 
