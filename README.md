@@ -13,10 +13,10 @@ Welcome to the Volunteer Network! This website allows users to choose events to 
 - Frontend built with React and styled with Tailwind CSS and DaisyUI.
 - Backend implemented using Express.js and MongoDB.
 
-##Technologies Used
--React
--Tailwind CSS
--DaisyUI
--Firebase
--Express.js
--MongoDB
+## Technologies Used
+- React
+- Tailwind CSS
+- DaisyUI
+- Firebase
+- Express.js
+- MongoDB
