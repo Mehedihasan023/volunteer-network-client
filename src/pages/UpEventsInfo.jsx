@@ -15,7 +15,7 @@ const UpEventsInfo = () => {
         const description = form.description.value;
         const img = form.img.value;
         const addEvents = { title, date, description, img }
-        console.log(addEvents);
+        //console.log(addEvents);
         //update value of an event
         fetch(`http://localhost:5000/events/${id}`, {
             method: 'PATCH',
@@ -28,7 +28,7 @@ const UpEventsInfo = () => {
             .then(res => res.json())
             .then(data => {
                 //console.log(data);
-                if (data.modifiedCount > 0) {
+                if (data?.result?.modifiedCount > 0) {
                     Swal.fire({
                          icon: 'success',
                          title: 'Event updated successfully...',

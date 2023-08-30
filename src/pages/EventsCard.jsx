@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from 'sweetalert2'
 const EventsCard = ({ event }) => {
-    const { img, title, description } = event;
+    const {img, title, description } = event;
     const [eventTitle, setEventTitle] = useState('');
     const { user } = useContext(AuthContext);
     const currentDate = new Date();
@@ -25,7 +25,9 @@ const EventsCard = ({ event }) => {
         }
         else {
             const email = user?.email;
-            const eventList = { title, img, email, description,date};
+            //save _id to update this event late
+            const updateId= event?._id;
+            const eventList = { updateId, title, img, email, description,date};
             console.log(eventList)
 
             //add events to database
@@ -51,9 +53,6 @@ const EventsCard = ({ event }) => {
 
 
     }
-
-
-
 
 
     return (
