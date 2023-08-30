@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-
+import Swal from 'sweetalert2'
 const EventsCard = ({ event }) => {
     const { img, title, description } = event;
     const [eventTitle, setEventTitle] = useState('');
@@ -18,7 +18,10 @@ const EventsCard = ({ event }) => {
      
         setEventTitle(title);
         if (title == eventTitle) {
-            return alert('already added to event list');
+            return Swal.fire({
+                icon: 'error',
+                text: 'Already added to event list',
+            });
         }
         else {
             const email = user?.email;
@@ -26,7 +29,7 @@ const EventsCard = ({ event }) => {
             console.log(eventList)
 
             //add events to database
-            fetch('http://localhost:5000/event-list', {
+            fetch('https://volunteer-network-server-tawny.vercel.app/event-list', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -37,7 +40,10 @@ const EventsCard = ({ event }) => {
                 .then(data => {
                     console.log(data)
                     if (data.insertedId) {
-                        alert('successfully')
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Event added successfully...',
+                        })
                     }
                 })
         }

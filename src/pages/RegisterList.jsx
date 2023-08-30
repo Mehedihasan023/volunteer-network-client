@@ -5,7 +5,7 @@ const RegisterList = () => {
    const [registerList, setRegisterList] = useState([]);
    
    useEffect(()=>{
-       fetch('http://localhost:5000/register-list')
+       fetch('https://volunteer-network-server-tawny.vercel.app/register-list')
        .then(res=> res.json())
        .then(data=> setRegisterList(data))
    },[])
@@ -22,7 +22,7 @@ const RegisterList = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/register-list/${id}`, {
+                fetch(`https://volunteer-network-server-tawny.vercel.app/register-list/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,13 +40,11 @@ const RegisterList = () => {
                     })
              
             }
-        })
-     
-          
+        }) 
      
     }
 
-   console.log(registerList);
+   //console.log(registerList);
     return (
         <div>
             <h2 className="text-3xl">Volunteer register list</h2>
