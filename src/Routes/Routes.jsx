@@ -41,7 +41,7 @@ const router = createBrowserRouter([
                     {
                         path:'/admin/up-events-info/:id',
                         element:<UpEventsInfo></UpEventsInfo>,
-                        loader: ({params}) => fetch(`http://localhost:5000/events/${params.id}`)
+                        loader: ({params}) => fetch(`https://volunteer-network-server-tawny.vercel.app/events/${params.id}`)
                     }
                 ]
             },

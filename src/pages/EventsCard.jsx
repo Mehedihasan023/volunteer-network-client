@@ -28,10 +28,10 @@ const EventsCard = ({ event }) => {
             //save _id to update this event late
             const updateId= event?._id;
             const eventList = { updateId, title, img, email, description,date};
-            console.log(eventList)
+            //console.log(eventList)
 
             //add events to database
-            fetch('http://localhost:5000/event-list', {
+            fetch('https://volunteer-network-server-tawny.vercel.app/event-list', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

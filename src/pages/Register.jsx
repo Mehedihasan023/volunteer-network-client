@@ -24,7 +24,7 @@ const Register = () => {
                 const user = result.user;
                 updateUserData(user, name)
                 // add user to database
-                fetch('http://localhost:5000/register-list', {
+                fetch('https://volunteer-network-server-tawny.vercel.app/register-list', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

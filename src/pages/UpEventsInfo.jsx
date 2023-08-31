@@ -17,7 +17,7 @@ const UpEventsInfo = () => {
         const addEvents = { title, date, description, img }
         //console.log(addEvents);
         //update value of an event
-        fetch(`http://localhost:5000/events/${id}`, {
+        fetch(`https://volunteer-network-server-tawny.vercel.app/events/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

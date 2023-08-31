@@ -4,7 +4,7 @@ const UpdateEvents = () => {
     const [events, setEvents] = useState([]);
     //fetch all events data
     useEffect(() => {
-        fetch('http://localhost:5000/events')
+        fetch('https://volunteer-network-server-tawny.vercel.app/events')
             .then(res => res.json())
             .then(data => setEvents(data))
     }, [])
