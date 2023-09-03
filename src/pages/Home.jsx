@@ -9,7 +9,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setEvents(data))
     }, [])
-
+console.log(events)
 
 
     return (
@@ -18,6 +18,13 @@ const Home = () => {
             <div className="flex justify-center items-center ">
                 <h2 className="text-3xl">I grow by helping people in need.</h2>
             </div>
+            {/* show  message if data is not found in server */}
+            <p className={events.length === 0 ? "text-orange-600 text-center text-2xl mt-20" : 'hidden'}>
+                {
+                    events.length === 0 && 'Data not found.. Server is down!!! '
+                }
+            </p>
+
             <div className="grid md:grid-cols-3 grid-cols-1 lg:grid-cols-4 mx-11 mt-4">
                 {
                     events.map(event => <EventsCard
