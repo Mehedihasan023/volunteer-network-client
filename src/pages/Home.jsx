@@ -16,7 +16,6 @@ const Home = () => {
     while (events.length === 0 && count < 6) {
         if (events.length === 0) {
             fetchData();
-           // location.reload(true);
             count++;
             console.log(count)
         }
