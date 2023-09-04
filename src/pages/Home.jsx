@@ -3,14 +3,15 @@ import EventsCard from "./EventsCard";
 
 const Home = () => {
     const [events, setEvents] = useState([]);
-//fetch all events data
-    useEffect(() => {
+    //fetch all events data
+    // call the useEffect function until the data is fetched
+     const eventsEmpty =  events.length === 0 ? 'events' : [];
+     
+         useEffect(() => {
         fetch('https://volunteer-network-server-tawny.vercel.app/events')
             .then(res => res.json())
             .then(data => setEvents(data))
-    }, [])
-console.log(events)
-
+         },[eventsEmpty])
 
     return (
         // display all events
@@ -29,7 +30,7 @@ console.log(events)
                 {
                     events.map(event => <EventsCard
                         key={event._id}
-                        event={event}   
+                        event={event}
                     ></EventsCard>)
                 }
             </div>

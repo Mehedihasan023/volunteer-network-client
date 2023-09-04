@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from '../../assets/logos/Group 1329.png'
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaUserCheck } from 'react-icons/fa';
 
 const NavBar = () => {
     const {user,logOut} = useContext(AuthContext);
@@ -19,7 +20,7 @@ const NavBar = () => {
         }
         <li><Link to='/register'>Register</Link></li>
         {
-            user?.email ? <><p className="mt-2 font-semibold">{user.displayName}</p></> :' '
+            user?.email ? <div className="flex"> <FaUserCheck className="mt-3 mr-2"></FaUserCheck> <p className="mt-2 font-semibold">{user.displayName}</p></div> :' '
         }
     </>
 
