@@ -8,7 +8,7 @@ const RegisterList = () => {
        fetch('https://volunteer-network-server-tawny.vercel.app/register-list')
        .then(res=> res.json())
        .then(data=> setRegisterList(data))
-   },[])
+   },[registerList])
     
     const handleDelete =(id)=>{
         // show alert message before delete

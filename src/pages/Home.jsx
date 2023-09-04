@@ -1,17 +1,29 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EventsCard from "./EventsCard";
 
 const Home = () => {
     const [events, setEvents] = useState([]);
     //fetch all events data
-    // call the useEffect function until the data is fetched
-     const eventsEmpty =  events.length === 0 ? 'events' : [];
-     
-         useEffect(() => {
+    const fetchData = () => {
+
         fetch('https://volunteer-network-server-tawny.vercel.app/events')
             .then(res => res.json())
             .then(data => setEvents(data))
-         },[eventsEmpty])
+
+    }
+    //if data is not loaded then fetch data 6 more times 
+    let count = 0;
+    while (events.length === 0 && count < 6) {
+        if (events.length === 0) {
+            fetchData();
+           // location.reload(true);
+            count++;
+            console.log(count)
+        }
+        else {
+            count = 6;
+        }
+    }
 
     return (
         // display all events
