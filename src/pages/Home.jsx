@@ -31,9 +31,9 @@ const Home = () => {
                 <h2 className="text-3xl">I grow by helping people in need.</h2>
             </div>
             {/* show  message if data is not found in server */}
-            <p className={events.length === 0 ? "text-orange-600 text-center text-2xl mt-20" : 'hidden'}>
+            <p className={events.length === 0 ? " text-center mt-20" : 'hidden'}>
                 {
-                    events.length === 0 && 'Data not found.. Server is down!!! '
+                    events.length === 0 && <><progress className="progress w-56"></progress></>
                 }
             </p>
 
